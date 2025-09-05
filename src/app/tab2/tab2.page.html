@@ -1,17 +1,130 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Jadwal Kuliah
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-accordion-group>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <!-- Senin -->
+    <ion-accordion value="senin">
+      <ion-item slot="header">
+        <ion-label>Senin</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-item>
+          <ion-label>
+            <h3>09:00 - 11:00 WIB</h3>
+            <h2>Praktikum Pemrograman Geospasial Perangkat Bergerak Lanjut (PGPBL)</h2>
+            <p>Lab. SIG</p>
+            <p>Dosen: Raden Ibnu Rosyadi, S.Si., M.Cs. / Raden Muhammad Anshori, S.Si., M.Sc.</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h3>11:10 - 13:00 WIB</h3>
+            <h2>Metodologi Penelitian (Metopen)</h2>
+            <p>Hall</p>
+            <p>Dosen: Dr. Nur Mohammad Farda, S.Si., M.Cs. / Dr. Like Indrawati, S.Si., M.Sc.</p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ion-accordion>
+
+    <!-- Selasa -->
+    <ion-accordion value="selasa">
+      <ion-item slot="header">
+        <ion-label>Selasa</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-item>
+          <ion-label>
+            <h3>09:00 - 10:40 WIB</h3>
+            <h2>Pendidikan Pancasila</h2>
+            <p>Filsafat</p>
+            <p>Dosen: Dosen Filsafat</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h3>11:30 - 13:10 WIB</h3>
+            <h2>Pendidikan Agama Islam</h2>
+            <p>Filsafat</p>
+            <p>Dosen: Dosen Filsafat</p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ion-accordion>
+
+    <!-- Rabu -->
+    <ion-accordion value="rabu">
+      <ion-item slot="header">
+        <ion-label>Rabu</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-item>
+          <ion-label>
+            <h3>11:10 - 13:00 WIB</h3>
+            <h2>Ide Kreatif Kewirausahaan (IKK)</h2>
+            <p>Hall</p>
+            <p>Dosen: Dr. Barandi Sapta Widartono, S.Si., M.Si., M.Sc. / Gatot Kurniawan, S.Si., M.Sc.</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h3>13:00 - 16:00 WIB</h3>
+            <h2>Sains Data Geospasial Lanjut (SDGL)</h2>
+            <p>Lab. SIG</p>
+            <p>Dosen: Ridho Dwi Darmawan, S.Si., M.Sc.</p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ion-accordion>
+
+    <!-- Kamis -->
+    <ion-accordion value="kamis">
+      <ion-item slot="header">
+        <ion-label>Kamis</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-item>
+          <ion-label>
+            <h3>07:15 - 08:55 WIB</h3>
+            <h2>Pendidikan Kewarganegaraan (Pkn)</h2>
+            <p>Filsafat</p>
+            <p>Dosen: Dosen Filsafat</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <h3>11:00 - 13:00 WIB</h3>
+            <h2>Aplikasi SIG untuk Sumber Daya Air (SDA)</h2>
+            <p>Lab. PJ</p>
+            <p>Dosen: Dr. Like Indrawati, S.Si., M.Sc.</p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ion-accordion>
+
+    <!-- Jumat -->
+    <ion-accordion value="jumat">
+      <ion-item slot="header">
+        <ion-label>Jumat</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-item>
+          <ion-label>
+            <h3>09:30 - 10:20 WIB</h3>
+            <h2>Praktikum Pemetaan Pesisir dan Kelautan (PPK)</h2>
+            <p>Hall</p>
+            <p>Dosen: Dr. Taufik Hery Purwanto, M.Si. / Dr. Barandi Sapta Widartono</p>
+          </ion-label>
+        </ion-item>
+      </div>
+    </ion-accordion>
+
+  </ion-accordion-group>
 </ion-content>
