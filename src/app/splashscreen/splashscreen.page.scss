@@ -1,0 +1,50 @@
+.splash-section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* logo atas, loading tengah, versi bawah */
+  align-items: center;
+  background: linear-gradient(180deg, #f8ccb4 0%, #fff6f0 100%);
+  padding: 40px 20px;
+}
+
+/* Logo */
+.top-logo img {
+  height: 140px;
+  animation: fadeInScale 1.2s ease-in-out;
+}
+
+/* Loading area */
+.middle-loading {
+  display: flex;
+  flex-direction: row;   /* spinner + teks sejajar */
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.middle-loading p {
+  margin: 0;
+  color: #666;
+  font-weight: 500;
+  font-size: 16px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Version text */
+small {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+/* Animations */
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
