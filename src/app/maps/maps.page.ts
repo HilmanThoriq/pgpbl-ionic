@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { IonFab, IonFabButton, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { add } from 'ionicons/icons';
@@ -18,6 +19,7 @@ export class MapsPage implements OnInit {
 
   map!: L.Map;
   private dataService = inject(DataService);
+  private navCtrl = inject(NavController);
 
   ngOnInit() {
     if (!this.map) {
@@ -68,12 +70,62 @@ export class MapsPage implements OnInit {
         const marker = L.marker(coordinates as L.LatLngExpression).addTo(
           this.map
         );
-        marker.bindPopup(`${point.name}`);
+        marker.bindPopup(`
+         <div class="popup-modern" style="min-width: 250px;">
+    <div class="popup-header py-3 bg-light">
+      <h6 class="mb-0 fw-bold text-center">${point.name}</h6>
+    </div>
+    <div class="d-flex gap-2 py-2">
+      <button class="btn btn-sm btn-outline-primary edit-link col-6" data-key="${key}">
+        <ion-icon name="create-outline"></ion-icon>
+        <span>Edit</span>
+      </button>
+      <button class="btn btn-sm btn-outline-danger delete-link col-6" data-key="${key}">
+        <ion-icon name="trash-outline"></ion-icon>
+        <span>Hapus</span>
+      </button>
+    </div>
+  </div>
+        `);
       }
     }
 
     this.map.on('popupopen', (e) => {
       const popup = e.popup;
+      const deleteLink = popup.getElement()?.querySelector('.delete-link');
+      if (deleteLink) {
+        deleteLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          const key = (deleteLink as HTMLElement).dataset['key'];
+          if (key) {
+            this.deletePoint(key, popup.getLatLng());
+          }
+        });
+      }
+
+      const editLink = popup.getElement()?.querySelector('.edit-link');
+      if (editLink) {
+        editLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          const key = (editLink as HTMLElement).dataset['key'];
+          if (key) {
+            this.navCtrl.navigateForward(`/editpoint/${key}`);
+          }
+        });
+      }
     });
+  }
+
+  async deletePoint(key: string, latLng: L.LatLng | undefined) {
+    await this.dataService.deletePoint(key);
+    if (latLng) {
+      this.map.eachLayer((layer) => {
+        if (layer instanceof L.Marker) {
+          if (layer.getLatLng().equals(latLng)) {
+            this.map.removeLayer(layer);
+          }
+        }
+      });
+    }
   }
 }

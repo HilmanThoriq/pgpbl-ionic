@@ -25,4 +25,28 @@ export class DataService {
       );
     });
   }
+  deletePoint(key: string) {
+    const pointRef = ref(database, `points/${key}`);
+    return remove(pointRef);
+  }
+
+  getPoint(key: string) {
+    const pointRef = ref(database, `points/${key}`);
+    return new Promise((resolve, reject) => {
+      get(pointRef).then((snapshot) => {
+        if (snapshot.exists()) {
+          resolve(snapshot.val());
+        } else {
+          reject('No data available');
+        }
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  }
+
+  updatePoint(key: string, data: { name: string; coordinates: string }) {
+    const pointRef = ref(database, `points/${key}`);
+    return update(pointRef, data);
+  }
 }
